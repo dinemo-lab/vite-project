@@ -18,7 +18,7 @@ const App = () => {
     // Check if user has an active restriction
     const checkRestriction = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.DEV_URL}/check-status`, { withCredentials: true });
+        const response = await axios.get(`${import.meta.env.VITE_DEV_URL}/check-status`, { withCredentials: true });
         if (response.data.restricted) {
           setTimeLeft(response.data.timeLeft);
           startCountdown(response.data.timeLeft);
@@ -73,7 +73,7 @@ const App = () => {
   const claimCoupon = async () => {
     setLoading(true);
     try {
-      const response = await axios.post(`${import.meta.env.DEV_URL}/check-status`, {}, { withCredentials: true });
+      const response = await axios.post(`${import.meta.env.VITE_DEV_URL}/check-status`, {}, { withCredentials: true });
       setCoupon(response.data.coupon);
       setMessage("Coupon claimed successfully!");
       setMessageType("success");
