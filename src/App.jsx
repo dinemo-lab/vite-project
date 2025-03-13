@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
-import 'dotenv/config';
+ 
 
 const App = () => {
   const [coupon, setCoupon] = useState(null);
