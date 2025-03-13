@@ -73,8 +73,9 @@ const App = () => {
   const claimCoupon = async () => {
     setLoading(true);
     try {
-      const response = await axios.post(`${import.meta.env.VITE_DEV_URL}/check-status`, {}, { withCredentials: true });
+      const response = await axios.post(`${import.meta.env.VITE_DEV_URL}/claim-coupon`, {}, { withCredentials: true });
       setCoupon(response.data.coupon);
+      console.log(import.meta.env.VITE_DEV_URL);
       setMessage("Coupon claimed successfully!");
       setMessageType("success");
       
