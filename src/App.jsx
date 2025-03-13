@@ -12,14 +12,13 @@ const App = () => {
   const [intervalId, setIntervalId] = useState(null);
   const [copied, setCopied] = useState(false);
 
-
-  const API_BASE_URL = import.meta.env.REACT_APP_API_URL || 'http://localhost:5000';
+ 
 
   useEffect(() => {
     // Check if user has an active restriction
     const checkRestriction = async () => {
       try {
-        const response = await axios.get(`${API_BASE_URL}/check-status`, { withCredentials: true });
+        const response = await axios.get(`${import.meta.env.DEV_URL}/check-status`, { withCredentials: true });
         if (response.data.restricted) {
           setTimeLeft(response.data.timeLeft);
           startCountdown(response.data.timeLeft);
@@ -74,7 +73,7 @@ const App = () => {
   const claimCoupon = async () => {
     setLoading(true);
     try {
-      const response = await axios.post(`${API_BASE_URL}/check-status`, {}, { withCredentials: true });
+      const response = await axios.post(`${import.meta.env.DEV_URL}/check-status`, {}, { withCredentials: true });
       setCoupon(response.data.coupon);
       setMessage("Coupon claimed successfully!");
       setMessageType("success");
